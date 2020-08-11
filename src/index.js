@@ -6,6 +6,7 @@ import "regenerator-runtime/runtime";
 
 async function citySearch(cityString, cityList, cityInput) {
   try {
+    // https://api.teleport.org/api/cities/?search=mat&embed=city%3Asearch-results%2Fcity%3Aitem%2Fcity%3Acountry
     const getCities = await fetch(`https://api.teleport.org/api/cities/?search=${cityString}`, { mode: 'cors' });
     const apiCities = await getCities.json();
     console.log(cityString);
