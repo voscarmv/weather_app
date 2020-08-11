@@ -1,5 +1,5 @@
-import Project from './project';
-import Task from './task';
+import Project from '../classes/project';
+import Task from '../classes/task';
 import Storage from './storage';
 
 const storageManager = (() => {

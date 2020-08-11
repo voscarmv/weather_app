@@ -1,5 +1,5 @@
-import Project from './project';
-import Task from './task';
+import Project from '../classes/project';
+import Task from '../classes/task';
 
 const Storage = (() => {
   const getProjectsCopy = () => JSON.parse(localStorage.getItem('projects_array') || '[]').map(project => Object.assign(new Project(), project));
