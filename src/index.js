@@ -97,7 +97,7 @@ const pagecontent = (() => {
           (city, i) => {
             const newCity = listElements(
               newElement('li', 'nav-item'),
-              newElement('a', 'nav-link', `${i}: ${city['matching_full_name']}`),
+              newElement('a', 'nav-link', `${i}: ${city['matching_full_name']} ${city['_embedded']['city:item']['geoname_id']}`),
             );
             cityList.appendChild(newCity);
             console.log(city);
