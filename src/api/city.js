@@ -1,4 +1,5 @@
 import City from '../classes/city';
+import weatherAPI from './weather';
 
 async function cityAPI(cityId) {
   try {
@@ -9,18 +10,23 @@ async function cityAPI(cityId) {
     );
     const cityJSON = await getCity.json();
     console.log(cityJSON);
-    let picture = "";
-    if(cityJSON['_embedded'].hasOwnProperty('city:urban_area')) {
-      if(cityJSON['_embedded']['city:urban_area']['_embedded'].hasOwnProperty('ua:images')){
-        picture = cityJSON['_embedded']['city:urban_area']['_embedded']['ua:images']['photos']['image']['mobile'];
-      }
-    }
+    let picture = 
+      cityJSON._embedded
+      ?.['city:urban_area']
+      ?._embedded
+      ?.['ua:images']
+      ?.['photos']
+      ?.[0]
+      ?.image
+      ?.mobile;
+    const weather = await weatherAPI(cityJSON['name'], cityJSON['_embedded']['city:country']['iso_alpha2']);
+
     return new City(
       cityJSON['name'],
       cityJSON['full_name'],
       cityJSON['_embedded']['city:country']['iso_alpha2'],
       picture,
-      null
+      weather,
     );
   } catch (error) {
     console.log(error);

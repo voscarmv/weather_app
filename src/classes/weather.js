@@ -6,6 +6,7 @@ class Weather {
     temp_max,
     pressure,
     humidity,
+    icon,
   ) {
     this.temp = temp;
     this.feels_like	= feels_like;
@@ -13,6 +14,7 @@ class Weather {
     this.temp_max	= temp_max;
     this.pressure	= pressure;
     this.humidity = humidity;  
+    this.icon = icon;
   }
 }
 

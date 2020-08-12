@@ -1,15 +1,7 @@
 import newElement from '../rendering/newelement';
-import listElements from '../rendering/listelements';
 
 const Home = (() => {
-  const home = listElements(
-    newElement('div'),
-    newElement(
-      'p',
-      'home-text mt-5',
-      'Welcome to "<span class="inline-logo">ToDo List Application</span>"',
-    ),
-  );
+  const home = newElement('h1', null, 'hello'); 
   return home;
 })();
 
