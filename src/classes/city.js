@@ -12,6 +12,14 @@ class City {
     this.picture = picture;
     this.weather = weather;
   }
+
+  setWeather(weather){
+    this.weather = weather;
+  }
+
+  getWeather(){
+    return this.weather;
+  }
 }
 
 export default City;
