@@ -19,7 +19,10 @@ async function cityAPI(cityId) {
       ?.[0]
       ?.image
       ?.mobile;
-    const weather = await weatherAPI(cityJSON['name'], cityJSON['_embedded']['city:country']['iso_alpha2']);
+    const weather = await weatherAPI(
+      cityJSON['name'], 
+      cityJSON['_embedded']['city:country']['iso_alpha2']
+    );
 
     return new City(
       cityJSON['name'],

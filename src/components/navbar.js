@@ -41,10 +41,8 @@ const Navbar = () => {
                   cityInput.value = city['matching_full_name'];
                   cityList.innerHTML = '';
                   mainContainer.display(Loading);
-                  console.log('City object');
                   const cityObject = await cityAPI(city['_embedded']['city:item']['geoname_id']);
-                  mainContainer.display(Weather);
-                  console.log(cityObject);
+                  mainContainer.display(Weather(cityObject));
                 },
                 ['href', '#']
               ),
