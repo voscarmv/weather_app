@@ -14,4 +14,14 @@ class Weather {
     this.pressure	= pressure;
     this.humidity = humidity;  
   }
+
+  setWeather(weather){
+    this.weather = weather;
+  }
+
+  getWeather(){
+    return this.weather;
+  }
 }
+
+export default Weather;

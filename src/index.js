@@ -6,6 +6,7 @@ import "regenerator-runtime/runtime";
 import listElements from './rendering/listelements';
 import newElement from './rendering/newelement';
 import autoComplete from './api/autocomplete';
+import cityAPI from './api/city';
 
 // async function citySearch(cityString, cityList) {
 //   try {
@@ -97,7 +98,15 @@ const pagecontent = (() => {
           (city, i) => {
             const newCity = listElements(
               newElement('li', 'nav-item'),
-              newElement('a', 'nav-link', `${i}: ${city['matching_full_name']} ${city['_embedded']['city:item']['geoname_id']}`),
+              newElement(
+                'a',
+                'nav-link', 
+                `${i}: ${city['matching_full_name']} ${city['_embedded']['city:item']['geoname_id']}`,
+                () => {
+                  cityAPI(city['_embedded']['city:item']['geoname_id']);
+                },
+                ['href', '#']
+              ),
             );
             cityList.appendChild(newCity);
             console.log(city);
