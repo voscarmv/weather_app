@@ -4,7 +4,7 @@ class City {
     fullname,
     country,
     picture,
-    weather
+    weather,
   ) {
     this.name = name;
     this.fullname = fullname;
@@ -13,7 +13,7 @@ class City {
     this.weather = weather;
   }
 
-  getName(){
+  getName() {
     return this.name;
   }
 
@@ -29,7 +29,7 @@ class City {
     return this.picture;
   }
 
-  getWeather(){
+  getWeather() {
     return this.weather;
   }
 }

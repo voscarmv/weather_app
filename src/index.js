@@ -1,8 +1,8 @@
 import './styles/style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
-import "core-js/stable";
-import "regenerator-runtime/runtime";
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import Layout from './pages/layout';
 import Home from './pages/home';
 import pageBody from './components/pagebody';

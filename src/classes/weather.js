@@ -1,23 +1,23 @@
 class Weather {
   constructor(
     temp,
-    feels_like,
-    temp_min,
-    temp_max,
+    feelsLike,
+    tempMin,
+    tempMax,
     pressure,
     humidity,
     icon,
     description,
   ) {
-    this.temp = parseInt(temp);
-    this.feels_like	= parseInt(feels_like);
-    this.temp_min	= parseInt(temp_min);
-    this.temp_max	= parseInt(temp_max);
-    this.tempf = Math.round((this.temp*9)/5 + 32);
-    this.feels_likef	= Math.round((this.feels_like * 9)/5 + 32);
-    this.temp_minf	= Math.round((this.temp_min * 9)/5 + 32);
-    this.temp_maxf	= Math.round((this.temp_max * 9)/5 + 32);
-    this.pressure	= pressure;
+    this.temp = parseInt(temp, 10);
+    this.feels_like = parseInt(feelsLike, 10);
+    this.temp_min = parseInt(tempMin, 10);
+    this.temp_max = parseInt(tempMax, 10);
+    this.tempf = Math.round((this.temp * 9) / 5 + 32);
+    this.feels_likef = Math.round((this.feels_like * 9) / 5 + 32);
+    this.temp_minf = Math.round((this.temp_min * 9) / 5 + 32);
+    this.temp_maxf = Math.round((this.temp_max * 9) / 5 + 32);
+    this.pressure = pressure;
     this.humidity = humidity;
     this.icon = icon;
     this.description = description;
@@ -60,7 +60,7 @@ class Weather {
   }
 
   getHumidity() {
-    return this.humidity;0
+    return this.humidity;
   }
 
   getIcon() {

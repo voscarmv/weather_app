@@ -2,13 +2,11 @@ import Weather from '../classes/weather';
 
 async function weatherAPI(city, country) {
   try {
-    console.log("hello from city api")
     const getWeather = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=metric&APPID=b0ecf9b6e7ac316267e1a5acaf7c01d3`,
-      { mode: 'cors' }
+      { mode: 'cors' },
     );
     const weatherJSON = await getWeather.json();
-    console.log(weatherJSON);
     return new Weather(
       weatherJSON.main.temp,
       weatherJSON.main.feels_like,
@@ -17,10 +15,9 @@ async function weatherAPI(city, country) {
       weatherJSON.main.pressure,
       weatherJSON.main.humidity,
       weatherJSON.weather[0].icon,
-      weatherJSON.weather[0].description
+      weatherJSON.weather[0].description,
     );
   } catch (error) {
-    console.log(error);
     return error;
   }
 }
