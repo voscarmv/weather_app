@@ -29,10 +29,20 @@ const pagecontent = (() => {
     return true;
   };
 
-  const buttonclick = async (f) => {
+  // que.push(async () => { astout(3000); });
+  // que.push(async () => { astout(2000); });
+  // que.push(async () => { astout(1000); });
+  // (async () => {
+  //   await que.shift()();
+  // })();
+
+  const buttonclick = (f) => {
     que.push(f);
+    // console.log(que);
     if (que.length === 1) {
-      await que.shift()();
+      (async () => {
+        await que.shift()();
+      })();
     }
   };
 
@@ -43,7 +53,8 @@ const pagecontent = (() => {
       null,
       'click',
       () => {
-        buttonclick(async () => { timeoutv -= 1000; await astout(timeoutv); });
+        buttonclick(async () => { astout(timeoutv); });
+        timeoutv -= 1000;
       },
     ),
   );
