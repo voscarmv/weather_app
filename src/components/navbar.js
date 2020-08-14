@@ -15,46 +15,61 @@ const Navbar = () => {
     newElement('ul', 'nav flex-column', null, null, ['id', 'city_nav']),
   );
 
+  const autoCompleteQueue = [];
+
   cityInput.addEventListener(
     'keyup',
     async () => {
-      try {
-        cityList.innerHTML = '';
-        cityList.appendChild(
-          listElements(
-            newElement('li', 'nav-item'),
-            newElement('a', 'nav-link active', 'Loading...'),
-          )
-        );
-        const cities = await autoComplete(cityInput.value); 
-        cityList.innerHTML = '';
-        cities.forEach(
-          (city, i) => {
-            const newCity = listElements(
-              newElement('li', 'nav-item'),
-              newElement(
-                'a',
-                'nav-link', 
-                `${city['matching_full_name']}`,
-                async () => {
-                  try {
-                    cityInput.value = city['matching_full_name'];
-                    cityList.innerHTML = '';
-                    mainContainer.display(Loading);
-                    const cityObject = await cityAPI(city['_embedded']['city:item']['geoname_id']);
-                    mainContainer.display(Weather(cityObject));
-                  } catch(e) {
-                    mainContainer.display(notFound);
-                  }
-                },
-                ['href', '#']
-              ),
+
+      autoCompleteQueue.push(
+        async () => {
+          try {
+            cityList.innerHTML = '';
+            cityList.appendChild(
+              listElements(
+                newElement('li', 'nav-item'),
+                newElement('a', 'nav-link active', 'Loading...'),
+              )
             );
-            cityList.appendChild(newCity);
-          },
-        );
-      } catch(e) {
-        console.log(e);
+            const cities = await autoComplete(cityInput.value); 
+            cityList.innerHTML = '';
+            cities.forEach(
+              (city, i) => {
+                const newCity = listElements(
+                  newElement('li', 'nav-item'),
+                  newElement(
+                    'a',
+                    'nav-link', 
+                    `${city['matching_full_name']}`,
+                    async () => {
+                      try {
+                        cityInput.value = city['matching_full_name'];
+                        cityList.innerHTML = '';
+                        mainContainer.display(Loading);
+                        const cityObject = await cityAPI(city['_embedded']['city:item']['geoname_id']);
+                        mainContainer.display(Weather(cityObject));
+                      } catch(e) {
+                        mainContainer.display(notFound);
+                      }
+                    },
+                    ['href', '#']
+                  ),
+                );
+                cityList.appendChild(newCity);
+              },
+            );
+            // This ensures that the latest keyup event shows the latest city list,
+            // and prevents that the longest-running api request shows on the city list.
+            if(autoCompleteQueue.length > 0){
+              autoCompleteQueue.shift()();
+            }
+          } catch(e) {
+            console.log(e);
+          }              
+        }
+      );
+      if(autoCompleteQueue.length == 1){
+        autoCompleteQueue.shift()();
       }
     },
   );

@@ -27,7 +27,7 @@ const Weather = (city) => {
   imgTemp.style.backgroundPosition = 'center center';
 
   let sensation = newElement('div', null, `Thermal sensation of ${cityweather.getFeelsLikeC()}&deg;C`);
-  let minmax = newElement('div', null, `Minimum temperatures of ${cityweather.getTempMaxC()}&deg;C, maximum of ${cityweather.getTempMinC()}&deg;C`);
+  let minmax = newElement('div', null, `Minimum temperatures of ${cityweather.getTempMinC()}&deg;C, maximum of ${cityweather.getTempMaxC()}&deg;C`);
 
   const weatherData = listElements(
     newElement('div', 'weatherdata d-flex flex-column'),
