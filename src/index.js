@@ -21,6 +21,7 @@ const pagecontent = (() => {
     if (t > 0) {
       await setTimeoutPromise(t);
       if (que.length > 0) {
+        console.log(`next ${que.length}`);
         await que.shift()();
       }
     } else {
@@ -36,13 +37,15 @@ const pagecontent = (() => {
   //   await que.shift()();
   // })();
 
+  let first = true;
   const buttonclick = (f) => {
-    que.push(f);
-    // console.log(que);
-    if (que.length === 1) {
+    que.push(async () => { astout(f); });
+    console.log(que);
+    if (first) {
       (async () => {
         await que.shift()();
       })();
+      first = false;
     }
   };
 
@@ -53,7 +56,8 @@ const pagecontent = (() => {
       null,
       'click',
       () => {
-        buttonclick(async () => { astout(timeoutv); });
+        console.log(timeoutv);
+        buttonclick(timeoutv);
         timeoutv -= 1000;
       },
     ),
