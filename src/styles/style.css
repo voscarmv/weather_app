@@ -22,5 +22,26 @@ body {
 }
 
 .page {
-  padding-bottom: 120px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-bottom: 100px;
+}
+
+.imgtemp, .weatherdata {
+  width: 300px;
+  height: 300px;
+  margin: 20px;
+}
+
+.imgtemp {
+  top: 50%;
+  left: 50%;
+}
+
+.temp-data {
+  font-size: 30px;
+}
+
+.desc-data {
+  font-size: 20px;
 }

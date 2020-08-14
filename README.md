@@ -64,6 +64,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
+"Clouds" by Chris.L.Dodds is licensed under CC BY-SA 2.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/2.0/
+
 - Hat tip to anyone whose code was used
 - Inspiration
 - etc

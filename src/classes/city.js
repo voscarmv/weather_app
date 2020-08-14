@@ -13,8 +13,20 @@ class City {
     this.weather = weather;
   }
 
-  setWeather(weather){
-    this.weather = weather;
+  getName(){
+    return this.name;
+  }
+
+  getFullName() {
+    return this.fullname;
+  }
+
+  getCountry() {
+    return this.country;
+  }
+
+  getPicture() {
+    return this.picture;
   }
 
   getWeather(){

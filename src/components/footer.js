@@ -4,7 +4,7 @@ import nestElements from '../rendering/nestelements';
 const Footer = () => {
   const footer = nestElements(
     newElement('footer', 'footer bg-white'),
-    newElement('div', 'container', 'View on github'),
+    newElement('a', 'container', 'View on github', null, ['href', 'https://github.com/voscarmv/weather_app']),
   );
   return footer;
 };

@@ -5,12 +5,11 @@ import cityAPI from '../api/city';
 import mainContainer from '../components/maincontainer';
 import Loading from '../pages/loading';
 import Weather from '../pages/weather';
+import notFound from '../pages/notfound';
 
 const Navbar = () => {
 
-  const cityInput = document.createElement('input');
-  cityInput.setAttribute('list', 'cities_list');
-  cityInput.setAttribute('class', 'w-100');
+  const cityInput = newElement('input', 'w-100', null, null, ['placeholder', 'Type the name of your city here...']);
 
   const cityList = listElements(
     newElement('ul', 'nav flex-column', null, null, ['id', 'city_nav']),
@@ -38,17 +37,20 @@ const Navbar = () => {
                 'nav-link', 
                 `${city['matching_full_name']}`,
                 async () => {
-                  cityInput.value = city['matching_full_name'];
-                  cityList.innerHTML = '';
-                  mainContainer.display(Loading);
-                  const cityObject = await cityAPI(city['_embedded']['city:item']['geoname_id']);
-                  mainContainer.display(Weather(cityObject));
+                  try {
+                    cityInput.value = city['matching_full_name'];
+                    cityList.innerHTML = '';
+                    mainContainer.display(Loading);
+                    const cityObject = await cityAPI(city['_embedded']['city:item']['geoname_id']);
+                    mainContainer.display(Weather(cityObject));
+                  } catch(e) {
+                    mainContainer.display(notFound);
+                  }
                 },
                 ['href', '#']
               ),
             );
             cityList.appendChild(newCity);
-            console.log(city);
           },
         );
       } catch(e) {
