@@ -16,10 +16,12 @@ const Navbar = () => {
   );
 
   const autoCompleteQueue = [];
+  let q = 0;
 
   cityInput.addEventListener(
     'keyup',
     async () => {
+      const inputval = cityInput.value;
       autoCompleteQueue.push(
         async () => {
           try {
@@ -30,7 +32,14 @@ const Navbar = () => {
                 newElement('a', 'nav-link active', 'Loading...'),
               ),
             );
-            const cities = await autoComplete(cityInput.value);
+            q += 1;
+            console.log(`start ${q} ${inputval}`);
+            const setTimeoutPromise = timeout => new Promise(resolve => {
+              setTimeout(resolve, timeout);
+            });
+            await setTimeoutPromise(1000);
+            const cities = await autoComplete(inputval);
+            console.log(`end ${q} ${inputval} ${cities.length}`);
             cityList.innerHTML = '';
             cities.forEach(
               (city) => {
@@ -60,7 +69,6 @@ const Navbar = () => {
             );
             // This ensures that the latest keyup event shows the latest city list,
             // and prevents that the longest-running api request shows on the city list.
-            console.log(cityInput.value);
             if (autoCompleteQueue.length > 0) {
               await autoCompleteQueue.shift()();
             }
