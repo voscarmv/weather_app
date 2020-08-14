@@ -60,6 +60,7 @@ const Navbar = () => {
             );
             // This ensures that the latest keyup event shows the latest city list,
             // and prevents that the longest-running api request shows on the city list.
+            console.log(cityInput.value);
             if (autoCompleteQueue.length > 0) {
               await autoCompleteQueue.shift()();
             }
@@ -70,7 +71,7 @@ const Navbar = () => {
         },
       );
       if (autoCompleteQueue.length === 1) {
-        autoCompleteQueue.shift()();
+        await autoCompleteQueue.shift()();
       }
     },
   );
