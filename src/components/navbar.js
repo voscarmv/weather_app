@@ -34,10 +34,6 @@ const Navbar = () => {
     );
     q += 1;
     console.log(`start ${q} ${cityString}`);
-    const setTimeoutPromise = timeout => new Promise(resolve => {
-      setTimeout(resolve, timeout);
-    });
-    await setTimeoutPromise(1000);
     const cities = await autoComplete(cityString);
     console.log(`end ${q} ${cityString} ${cities.length}`);
     cityList.innerHTML = '';
@@ -70,10 +66,6 @@ const Navbar = () => {
     // This ensures that the latest keyup event shows the latest city list,
     // and prevents that the longest-running api request shows on the city list.
     if (autoCompleteQueue.length > 0) {
-      await autoCompleteQueue.shift()();
-    }
-
-    if (autoCompleteQueue.length > 0) {
       console.log(`next ${autoCompleteQueue.length}`);
       await autoCompleteQueue.shift()();
     } else {
@@ -84,7 +76,7 @@ const Navbar = () => {
 
   const keyupAutocompleteStacker = (cityString) => {
     autoCompleteQueue.push(async () => { getCitiesList(cityString); });
-    console.log(autoCompleteQueue);
+    // console.log(autoCompleteQueue);
     if (first) {
       (async () => {
         await autoCompleteQueue.shift()();
