@@ -16,6 +16,7 @@ const pagecontent = (() => {
   let timeoutv = 4000;
 
   const que = [];
+  let first = true;
 
   const astout = async (t) => {
     if (t > 0) {
@@ -23,6 +24,9 @@ const pagecontent = (() => {
       if (que.length > 0) {
         console.log(`next ${que.length}`);
         await que.shift()();
+      } else {
+        first = true;
+        timeoutv = 4000;
       }
     } else {
       return true;
@@ -37,7 +41,6 @@ const pagecontent = (() => {
   //   await que.shift()();
   // })();
 
-  let first = true;
   const buttonclick = (f) => {
     que.push(async () => { astout(f); });
     console.log(que);
