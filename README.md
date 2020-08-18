@@ -2,11 +2,11 @@
 
 > An app that tells the weather. It comes equipped with an auto-complete search bar to find your city!
 
-![screenshot](./app_screenshot.png)
+![image](https://user-images.githubusercontent.com/2739245/90542840-5c43d400-e14a-11ea-9bd7-85b52725822b.png)
 
 ## Live Demo
 
-Check out the live demo [here]().
+Check out the live demo [here](https://voscarmv.github.io/weather_app/).
 
 ### Prerequisites
 - Install Node JS. ([NodeJS Documentation](https://nodejs.org/en/docs/)) 
