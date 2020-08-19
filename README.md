@@ -4,7 +4,7 @@
 
 ![image](https://user-images.githubusercontent.com/2739245/90542840-5c43d400-e14a-11ea-9bd7-85b52725822b.png)
 
-The `navbar.js` [autocomplete interface](https://github.com/voscarmv/weather_app/blob/master/src/components/navbar.js) uses a novel `async` call stacking algorithm to prevent the overlapping of Teleport API responses.
+The `navbar.js` [autocomplete interface](https://github.com/voscarmv/weather_app/blob/master/src/components/navbar.js) uses a novel [`async` call stacking algorithm](https://github.com/voscarmv/weather_app/blob/master/src/components/navbar.js#L67) to prevent the overlapping of Teleport API responses.
 
 ## Live Demo
 
