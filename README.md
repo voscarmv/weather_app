@@ -45,13 +45,10 @@ Give a ⭐️ if you like this project!
 - Thanks to [Microverse](www.microverse.org) for the opportunity.
 - Thanks to [The Odin Project](https://www.theodinproject.com/) for the guidance.
 
-### Image credits
+## Future features and improvements
 
-The images used are not released under the MIT license. These belong to their corresponding owners:
-
-- https://flic.kr/p/329ZqV
-- https://flic.kr/p/eBFdy
-- https://flic.kr/p/27RKtdv
+- A better UX and design for the page.
+- Instead of a sequential async call stack for `navbar.js`, implement a timeout-based approach as to not overwhelm the Telepor API with requests when typing a city name.
 
 ## 📝 License
 
